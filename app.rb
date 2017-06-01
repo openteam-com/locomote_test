@@ -1,5 +1,12 @@
 require 'sinatra'
+require 'sprockets'
 require './lib/requester.rb'
+
+environment = Sprockets::Environment.new
+environment.append_path "assets/stylesheets"
+environment.append_path "assets/javascripts"
+environment.js_compressor  = :uglify
+environment.css_compressor = :sass
 
 get "/" do
   erb :index
@@ -41,4 +48,10 @@ get "/search" do
 
   threads.each(&:join)
   result.to_json
+end
+
+# asset path
+get "/assets/*" do
+  env["PATH_INFO"].sub!("/assets", "")
+  environment.call(env)
 end

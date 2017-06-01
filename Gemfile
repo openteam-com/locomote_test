@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'shotgun'
 gem 'httparty'
+gem 'sass'
+gem 'shotgun'
+gem 'sinatra'
+gem 'sprockets'
+gem 'uglifier'

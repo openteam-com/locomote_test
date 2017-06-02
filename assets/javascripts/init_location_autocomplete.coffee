@@ -1,5 +1,5 @@
-$ ->
-  transformToAutocmpleteData = (data) ->
+@init_location_autocomplete = ->
+  transformToAutocompleteData = (data) ->
     data.map ({airportCode: code, airportName, cityName }) ->
       label = "#{airportName} #{cityName}"
       { code, label }
@@ -12,7 +12,7 @@ $ ->
         url: 'airports'
         data: q: request.term
         success: (data) ->
-          response transformToAutocmpleteData(data)
+          response transformToAutocompleteData(data)
     select: (event, ui) ->
       $(this).next('.js-autocomplete-target').val(ui.item.code)
   )

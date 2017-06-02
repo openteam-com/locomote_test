@@ -1,52 +1,12 @@
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
-    <title>Flight Search</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/app.css">
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="assets/app.js"></script>
-  </head>
+  <%= erb :header %>
   <body>
     <div class="container">
       <div class="row">
-        <form id="flightForm">
-          <div class="form-group col-xs-3">
-            <label for="from_location">From Location</label>
-            <input type="text"
-                   class="form-control js-autocomplete"
-                   id="from_location"
-                   placeholder="From Location">
-            <input type="hidden"
-                   class="js-autocomplete-target"
-                   name="from">
-
-          </div>
-          <div class="form-group col-xs-3">
-            <label for="to_location">To Location</label>
-            <input type="text"
-                   class="form-control js-autocomplete"
-                   id="to_location"
-                   placeholder="To Location">
-            <input type="hidden"
-                   class="js-autocomplete-target"
-                   name="to">
-          </div>
-          <div class="form-group col-xs-3">
-            <label for="travel_date">Travel Date</label>
-            <input type="text"
-                   class="form-control datepicker"
-                   id="travel_date"
-                   placeholder="Travel Date"
-                   name="date">
-          </div>
-          <button type="submit" class="btn btn-success col-xs-3">Search</button>
-        </form>
+        <%= erb :search_form %>
+      </div>
+      <div class="row">
+        <%= erb :results %>
       </div>
     </div>
   </body>

@@ -1,0 +1,43 @@
+<form id="flightForm">
+  <!-- From -->
+  <div class="form-group col-xs-3">
+    <label for="from_location">
+      From Location
+    </label>
+    <input type="text"
+           class="form-control js-autocomplete"
+           id="from_location"
+           required="true"
+           placeholder="From Location">
+    <input type="hidden"
+           class="js-autocomplete-target"
+           name="from">
+  </div>
+
+  <!-- To -->
+  <div class="form-group col-xs-3">
+    <label for="to_location">To Location</label>
+    <input type="text"
+           class="form-control js-autocomplete"
+           id="to_location"
+           required="true"
+           placeholder="To Location">
+    <input type="hidden"
+           class="js-autocomplete-target"
+           name="to">
+  </div>
+
+  <!-- When  -->
+  <div class="form-group col-xs-3">
+    <label for="travel_date">Travel Date</label>
+    <input type="text"
+           class="form-control datepicker"
+           required="true"
+           id="travel_date"
+           placeholder="Travel Date"
+           name="date">
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="btn btn-success col-xs-3 submit-button">Search</button>
+</form>

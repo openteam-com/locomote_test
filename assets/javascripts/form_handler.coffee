@@ -1,11 +1,23 @@
-$ ->
-  form = $('#flightForm')
-  form.submit( (event) ->
-    params = $(this).serialize()
-    $.ajax
-      url: "search?#{params}"
-      success: (data) ->
-        console.log data
-    event.preventDefault()
-  )
+#= require html_renderers
+renderResults = @renderResults
 
+submitCallback = (event) ->
+  event.preventDefault()
+  params = $(this).serialize()
+  # params = "from=DME&to=LHR&date=2017-06-13"
+
+  $.ajax
+    url: "search?#{params}"
+    success: succesCallback
+    beforeSend: beforeSendCallback
+
+succesCallback = (data) ->
+  renderResults(data)
+  $('.js-loader').toggle()
+
+beforeSendCallback = ->
+  $('.js-loader').toggle()
+
+@form_handler = ->
+  form = $('#flightForm')
+  form.submit submitCallback

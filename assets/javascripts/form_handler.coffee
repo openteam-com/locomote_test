@@ -14,9 +14,11 @@ submitCallback = (event) ->
 succesCallback = (data) ->
   renderResults(data)
   $('.js-loader').toggle()
+  $('.js-content').toggle()
 
 beforeSendCallback = ->
   $('.js-loader').toggle()
+  $('.js-content').toggle()
 
 @form_handler = ->
   form = $('#flightForm')

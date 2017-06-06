@@ -1,5 +1,6 @@
 datesTabs = -> $('#dates-tabs')
 tabContents = -> $('#tab-content')
+errorsWrapper = -> $('#errors')
 
 append = (target, content) ->
   $(target).append(content)
@@ -71,10 +72,18 @@ renderFlightBody = ({flightNum, plane, start, finish, airline}) ->
   planeInfo = makeHtml('span', "Flight № #{flightNum}, #{plane.shortName}", class: 'pull-right')
   makeHtml 'div', "#{aircompany}#{start} - #{finish}#{planeInfo}", class: 'panel-body'
 
+renderErrors = (errors) ->
+  errors.map (error) ->
+    message = makeHtml('p', error, class: "bg-danger")
+    append errorsWrapper(), message
+
 @renderResults = (dates) ->
   datesTabs().empty()
   tabContents().empty()
-  for {date, flights}, index in dates
-    renderTab(date, index)
-    renderTabContent(date, flights, index)
-    activateTabs()
+  if dates.errors
+    renderErrors(dates.errors)
+  else
+    for {date, flights}, index in dates
+      renderTab(date, index)
+      renderTabContent(date, flights, index)
+      activateTabs()

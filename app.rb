@@ -2,6 +2,9 @@ require 'sinatra'
 require 'sprockets'
 require './lib/requester.rb'
 require './lib/sorted_flights_search.rb'
+require './helpers/main_helper.rb'
+
+include MainHelper
 
 set :public_folder, File.dirname(__FILE__) + '/public'
 environment = Sprockets::Environment.new
@@ -29,7 +32,7 @@ end
 
 get "/search" do
   content_type :json
-  result = SortedFlightsSearch.new(params).search
+  result = search_params_present? ? SortedFlightsSearch.new(params).search : { errors: missing_params_error_messages  }
   result.to_json
 end
 

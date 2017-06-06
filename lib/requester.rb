@@ -8,7 +8,11 @@ class Requester
   end
 
   def body
-    @response.body
+    code == 200 ? @response.body : "[]"
+  end
+
+  def code
+    @response.code
   end
 
   def parsed_body
